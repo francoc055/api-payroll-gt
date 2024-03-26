@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 
 """core URL Configuration
 
@@ -18,7 +16,6 @@ Including another URLconf
 """
 
 
->>>>>>> feature/module-employee
 from django.contrib import admin
 from django.urls import path, include
 

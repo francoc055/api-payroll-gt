@@ -37,21 +37,16 @@ DJANGO_APPS = [
     'corsheaders',
     'apps.user',
     'apps.company',
-    'corsheaders',
-    #'apps.employee',
-    #'apps.user',
-    #'apps.company',
-    # 'rest_framework',
-    # 'apps.company',
+    'apps.payrolls',
 ]
 
 # Se definen las aplicaciones del proyecto
 PROJECT_APPS = [
-    'apps.company',
+    # 'apps.company',
     # 'apps.company'
-    'apps.payrolls',
-    'apps.employee',
-    'apps.user',
+    # 'apps.payrolls',
+    # 'apps.employee',
+    # 'apps.user',
 
 ]
 
@@ -112,12 +107,12 @@ DATABASES = {
 
 # Se configuran las opciones de CORS
     
-    CORS_ALLOWED_ORIGINS = [
-        'http://localhost:5173',
-        'http://127.0.0.1:5173',
-        'http://localhost:3000',
-        'http://127.0.0.1:3000',
-    ]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
