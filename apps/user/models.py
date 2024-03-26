@@ -24,26 +24,7 @@ class User(AbstractUser):
     is_default_password = models.BooleanField(default=True) 
 
 
-    # def create_user_admin(self, email, password, instance_company):
-        # """
-        # Este método crea un nuevo usuario con el rol de 'admin' y asigna los valores
-        # proporcionados para el email, contraseña, nombre de usuario y compañía.
-
-        # Returns:
-        #     User: El nuevo usuario creado con rol de 'admin'.
-        # """
-        # self.company = instance_company
-        # self.email = email
-        # self.username = instance_company.name
-        # self.picture = instance_company.picture
-        # self.role = 'admin'
-        # self.is_default_password = False
-        # self.password = make_password(password)
-        # self.save()
-        # return self
-
-    @classmethod
-    def create_user_admin(cls, email, password, instance_company):
+    def create_user_admin(self, email, password, instance_company):
         """
         Este método crea un nuevo usuario con el rol de 'admin' y asigna los valores
         proporcionados para el email, contraseña, nombre de usuario y compañía.
@@ -51,17 +32,36 @@ class User(AbstractUser):
         Returns:
             User: El nuevo usuario creado con rol de 'admin'.
         """
-        user_instance = cls(
-            company=instance_company,
-            email=email,
-            username=instance_company.name,
-            picture=instance_company.picture,
-            role='admin',
-            is_default_password=False,
-            password=make_password(password),
-        )
-        user_instance.save()
-        return user_instance
+        self.company = instance_company
+        self.email = email
+        self.username = instance_company.name
+        self.picture = instance_company.picture
+        self.role = 'admin'
+        self.is_default_password = False
+        self.password = make_password(password)
+        self.save()
+        return self
+
+    # @classmethod
+    # def create_user_admin(cls, email, password, instance_company):
+    #     """
+    #     Este método crea un nuevo usuario con el rol de 'admin' y asigna los valores
+    #     proporcionados para el email, contraseña, nombre de usuario y compañía.
+
+    #     Returns:
+    #         User: El nuevo usuario creado con rol de 'admin'.
+    #     """
+    #     user_instance = cls(
+    #         company=instance_company,
+    #         email=email,
+    #         username=instance_company.name,
+    #         picture=instance_company.picture,
+    #         role='admin',
+    #         is_default_password=False,
+    #         password=make_password(password),
+    #     )
+    #     user_instance.save()
+    #     return user_instance
     
     def create_user(self, email, username):
         """

@@ -14,14 +14,17 @@ class CompanyViewSet(viewsets.ModelViewSet):
     serializer_class = CompanyModelSerializer
     permission_classes = [IsCompanySuperAdmin]
 
-    def create(self, request, *args, **kwargs):
-        
+    def post(self, request, *args, **kwargs):
         serializer = CompanyModelSerializer(data=request.data)
         if serializer.is_valid():
+            # Validar el serializador
+            print("Datos del serializador:")
+            print(serializer.data)
+
             # Creacion de compañía
             company_instance = serializer.save()
             print("Datos de la compañía creada:")
-            print(serializer.data)
+            print(company_instance)
 
             #diccionario de datos a pasar
             user_data = {
@@ -31,9 +34,9 @@ class CompanyViewSet(viewsets.ModelViewSet):
             }
 
             # Creacion de instancia y pasada de datos a User
-            # user_instance = User()
+            user_instance = User()
 
-            create_user_result = User.create_user_admin(**user_data)
+            create_user_result = user_instance.create_user_admin(**user_data)
 
             if create_user_result:
                 return Response({"message": "Company and user created successfully"}, status=status.HTTP_201_CREATED)
