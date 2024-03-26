@@ -31,9 +31,9 @@ class CompanyViewSet(viewsets.ModelViewSet):
             }
 
             # Creacion de instancia y pasada de datos a User
-            user_instance = User()
+            # user_instance = User()
 
-            create_user_result = user_instance.create_user_admin(**user_data)
+            create_user_result = User.create_user_admin(**user_data)
 
             if create_user_result:
                 return Response({"message": "Company and user created successfully"}, status=status.HTTP_201_CREATED)
