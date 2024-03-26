@@ -117,7 +117,7 @@ class ResetPassword(APIView):
     Args:
         APIView: Clase base para todas las vistas de la API de Django Rest Framework.
     """
-    def put(self, request, id):
+    def put(self, request):
         """
         Esta función toma el ID del usuario y los datos de la nueva contraseña
         proporcionados en la solicitud PUT, y luego actualiza la contraseña
@@ -126,7 +126,9 @@ class ResetPassword(APIView):
         Returns:
             Response: Un objeto de respuesta con un mensaje de éxito si la contraseña se cambió con éxito.
         """
-        user = get_object_or_404(User, id=id)
+        email = request.data.get('email')
+
+        user = get_object_or_404(User, email=email)
 
         password = request.data.get('password')
         confirm_password = request.data.get('confirm_password')
